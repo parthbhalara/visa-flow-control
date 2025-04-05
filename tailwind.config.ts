@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // Custom colors
+                "visa-blue": {
+                    50: "#E6F0FF",
+                    100: "#CCE0FF",
+                    200: "#99C2FF",
+                    300: "#66A3FF",
+                    400: "#3385FF",
+                    500: "#0066FF",
+                    600: "#0052CC",
+                    700: "#003D99",
+                    800: "#002966",
+                    900: "#001433",
+                },
+                "visa-gold": {
+                    50: "#FFF8E6",
+                    100: "#FFF1CC",
+                    200: "#FFE499",
+                    300: "#FFD666",
+                    400: "#FFC933",
+                    500: "#E6B012",
+                    600: "#CC9900",
+                    700: "#997300",
+                    800: "#664D00",
+                    900: "#332600",
+                },
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
