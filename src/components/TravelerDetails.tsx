@@ -55,6 +55,17 @@ const TravelerDetails = ({ travelerDetails }: TravelerDetailsProps) => {
     );
   };
 
+  // New function to reset document status to pending
+  const handleResetStatus = (id: string) => {
+    setDocuments(
+      documents.map((doc) =>
+        doc.id === id
+          ? { ...doc, status: 'pending', notes: notes[id] || doc.notes }
+          : doc
+      )
+    );
+  };
+
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'pending':
@@ -215,7 +226,7 @@ const TravelerDetails = ({ travelerDetails }: TravelerDetailsProps) => {
                           )}
                           
                           {(doc.status === 'approved' || doc.status === 'rejected') && (
-                            <Button variant="outline" size="sm" onClick={() => handleUpdateStatus(doc.id, 'pending')}>
+                            <Button variant="outline" size="sm" onClick={() => handleResetStatus(doc.id)}>
                               <Clock className="h-4 w-4 mr-1" />
                               Reset
                             </Button>
