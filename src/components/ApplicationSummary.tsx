@@ -128,7 +128,7 @@ const ApplicationSummary = ({ application }: ApplicationSummaryProps) => {
           <div className="flex items-center mb-4">
             <CreditCard className="h-5 w-5 mr-2" />
             <span className="text-lg">Payment Status: </span>
-            <Badge className={getPaymentStatusColor(application.payment?.status || 'pending')} className="ml-2">
+            <Badge className={getPaymentStatusColor(application.payment?.status || 'pending')}>
               {application.payment?.status === 'completed' ? 'Paid' : 'Payment Pending'}
             </Badge>
           </div>
