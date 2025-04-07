@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -52,7 +51,6 @@ const ApplicationQueue = () => {
   const filteredApplications = useMemo(() => {
     let result = [...mockApplications];
 
-    // Apply search
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       result = result.filter(
@@ -63,22 +61,18 @@ const ApplicationQueue = () => {
       );
     }
 
-    // Apply status filter
     if (statusFilter !== "all") {
       result = result.filter((app) => app.status === statusFilter);
     }
 
-    // Apply type filter
     if (typeFilter !== "all") {
       result = result.filter((app) => app.visaType === typeFilter);
     }
 
-    // Apply sorting
     result.sort((a, b) => {
       let valueA = a[sortField];
       let valueB = b[sortField];
 
-      // Handle date strings
       if (typeof valueA === "string" && typeof valueB === "string") {
         if (
           sortField === "dateSubmitted" ||
@@ -246,7 +240,7 @@ const ApplicationQueue = () => {
                         <Button 
                           variant="ghost" 
                           size="icon"
-                          onClick={() => alert(`View application ${application.id}`)}
+                          onClick={() => navigate(`/applications/${application.id}`)}
                         >
                           <FileText className="h-4 w-4" />
                         </Button>

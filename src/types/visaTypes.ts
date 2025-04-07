@@ -21,6 +21,12 @@ export type ProcessingSpeed =
   | 'express' 
   | 'super_express';
 
+export type PaymentStatus = 
+  | 'pending'
+  | 'completed'
+  | 'failed'
+  | 'refunded';
+
 export interface VisaApplication {
   id: string;
   applicantName: string;
@@ -37,6 +43,57 @@ export interface VisaApplication {
   contactPhone?: string;
   assignedTo?: string;
   lastUpdated: string;
+  purpose?: string;
+  plan?: string;
+  travelers?: number;
+  payment?: PaymentDetails;
+  travelDateEnd?: string;
+  documents?: Document[];
+  travelerDetails?: TravelerDetails;
+}
+
+export interface PaymentDetails {
+  status: PaymentStatus;
+  visaFee: number;
+  serviceFee: number;
+  couponDiscount?: number;
+  totalAmount: number;
+  transactionId?: string;
+  paymentDate?: string;
+}
+
+export interface Document {
+  id: string;
+  name: string;
+  type: string;
+  uploadDate: string;
+  fileSize: string;
+  fileUrl: string;
+}
+
+export interface TravelerDetails {
+  fullName: string;
+  dateOfBirth: string;
+  passportNumber: string;
+  passportIssueDate: string;
+  passportExpiryDate: string;
+  address: string;
+  phoneNumber: string;
+  email: string;
+  occupation?: string;
+  employer?: string;
+  additionalInfo?: Record<string, string>;
+  requiredDocuments?: RequiredDocument[];
+}
+
+export interface RequiredDocument {
+  id: string;
+  name: string;
+  description?: string;
+  required: boolean;
+  status: 'pending' | 'uploaded' | 'approved' | 'rejected';
+  notes?: string;
+  fileUrl?: string;
 }
 
 export interface AdminUser {

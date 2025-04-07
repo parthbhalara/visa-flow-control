@@ -10,6 +10,7 @@ import DashboardLayout from "./components/DashboardLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ApplicationQueue from "./pages/ApplicationQueue";
+import ApplicationDetail from "./pages/ApplicationDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,16 @@ const App = () => (
                 <AuthGuard>
                   <DashboardLayout>
                     <ApplicationQueue />
+                  </DashboardLayout>
+                </AuthGuard>
+              }
+            />
+            <Route
+              path="/applications/:id"
+              element={
+                <AuthGuard>
+                  <DashboardLayout>
+                    <ApplicationDetail />
                   </DashboardLayout>
                 </AuthGuard>
               }
